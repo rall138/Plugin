@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Sample Category"
+            id="CRUDFactory.commands.category">
+      </category>
+      <command
+            name="Open Navigator Command"
+            categoryId="CRUDFactory.commands.category"
+            id="CRUDFactory.commands.openNavigatorCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="CRUDFactory.commands.openNavigatorCommand"
+            class="crudfactory.handlers.CRUDFactoryHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key commandId="CRUDFactory.commands.openNavigatorCommand"
+           contextId="org.eclipse.ui.contexts.window" sequence="M1+6"
+           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu label="RLTools" mnemonic="M" id="CRUDFactory.menus.rlToolsMenu">
+            <command commandId="CRUDFactory.commands.openNavigatorCommand" mnemonic="S"
+                  id="CRUDFactory.menus.openNavigatorCommand">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="CRUDFactory.toolbars.sampleToolbar">
+            <command
+                  commandId="CRUDFactory.commands.openNavigatorCommand"
+                  icon="icons/sample.gif"
+                  tooltip="CRUD Factory"
+                  id="CRUDFactory.toolbars.openNavigatorCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
